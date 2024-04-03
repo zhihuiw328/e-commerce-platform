@@ -20,7 +20,8 @@ const ProductList = ({ addToCart, searchTerm }) => {
   useEffect(() => {
     setFilteredProducts(
       products.filter(product =>
-        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
   }, [searchTerm, products]);
