@@ -14,31 +14,33 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-      <Select defaultValue="name" style={{ width: 120, marginRight: '10px' }} onChange={setSearchType}>
+    <div style={style.container}>
+      <Select defaultValue="name" style={style.select} onChange={setSearchType}>
         <Option value="name">Name</Option>
         <Option value="category">Category</Option>
       </Select>
       <Search
         placeholder={`Search by ${searchType}`}
         onSearch={handleSearch}
-        style={{ width: 200 }}
+        style={style.search}
       />
     </div>
   );
-
-  // return (
-  //   <Input.Search
-  //     placeholder="Search for products"
-  //     onSearch={onSearch}
-  //     style={{ width: 200, marginBottom: '1rem' }}
-  //     enterButton
-  //   />
-  // );
 };
 
 const style = {
-  
+  container: { 
+    display: 'flex', 
+    justifyContent: 'center',
+     marginBottom: '20px' 
+  },
+  select: { 
+    width: 120, 
+    marginRight: '10px' 
+  },
+  search: { 
+    width: 200 
+  }
 }
 
 
