@@ -11,3 +11,17 @@ export const fetchProducts = async () => {
     return null;
   }
 };
+
+export const searchProducts = async (searchTerm, searchType) => {
+  const url = searchType === 'category'
+    ? `https://dummyjson.com/products/category/${searchTerm}`
+    : `https://dummyjson.com/products/search?q=${searchTerm}`;
+
+  try {
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return { products: [] }; // Return an empty list on error
+  }
+};

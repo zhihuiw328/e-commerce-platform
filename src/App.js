@@ -12,6 +12,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [visible, setVisible] = useState(false); // For Drawer visibility
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchType, setSearchType] = useState('');
 
   const showDrawer = () => {
     setVisible(true);
@@ -21,6 +22,8 @@ function App() {
     setVisible(false);
   };
 
+
+  
   const addToCart = (product) => {
     setCartItems((prevItems) => {
       const itemExists = prevItems.find((item) => item.id === product.id);
@@ -47,9 +50,12 @@ function App() {
     });
   };
 
-  const onSearch = (value) => {
+  const onSearch = (value, searchType) => {
     setSearchTerm(value);
+    setSearchType(searchType);
   };
+
+
 
   return (
     <Layout className="layout">
@@ -77,7 +83,7 @@ function App() {
             
           </Row>
 
-          <ProductList addToCart={addToCart} searchTerm={searchTerm} />
+          <ProductList addToCart={addToCart} searchTerm={searchTerm} searchType={searchType} />
         </div>
       </Content>
     </Layout>
